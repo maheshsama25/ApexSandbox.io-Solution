@@ -1,4 +1,7 @@
 public Id insertCourse(String name, String details, Integer credits) {
+    if(credits != 1 && credits != 2 && credits != 3 && credits != 4) {
+        return null;
+    }
     apxio__Course__c newCourse = new apxio__Course__c();
     newCourse.Name = name;
     newCourse.apxio__Course_Details__c = details;
@@ -6,8 +9,6 @@ public Id insertCourse(String name, String details, Integer credits) {
     insert newCourse;
     return newCourse.Id;
 }
-
-
 
 
  
