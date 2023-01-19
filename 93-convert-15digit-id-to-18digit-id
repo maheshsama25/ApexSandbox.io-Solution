@@ -1,0 +1,17 @@
+public String convert15to18DigitId(String fifteenDigit)
+{if(fifteenDigit.length() != 15) {
+        return "-1";
+    }
+    String eighteenDigit = fifteenDigit + calculateCheckDigit(fifteenDigit);
+    return eighteenDigit;
+}
+
+private String calculateCheckDigit(String fifteenDigit) {
+    Integer[] weight = {1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7};
+    Integer sum = 0;
+    for(Integer i = 0; i < 15; i++) {
+        sum += (Integer.valueOf(fifteenDigit.substring(i, i+1)) * weight[i]);
+    }
+    Integer checkDigit = sum % 10;
+    return checkDigit.toString();
+}
